@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SYED ARSHAD HUSSAIN | DATA Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  :root {
+    --pink: #e8185d;
+    --pink-light: #ff4d8b;
+    --dark: #1a1a2e;
+    --text: #2d2d2d;
+    --text-muted: #666;
+    --bg: #f0f0f0;
+    --card-bg: #e8e8e8;
+    --white: #ffffff;
+    --shadow: 8px 8px 16px #d0d0d0, -8px -8px 16px #ffffff;
+    --shadow-inset: inset 4px 4px 8px #d0d0d0, inset -4px -4px 8px #ffffff;
+    --shadow-hover: 12px 12px 24px #c8c8c8, -12px -12px 24px #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 3px; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(240,240,240,0.85);
+    backdrop-filter: blur(12px);
+    padding: 14px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+  }
+
+  .nav-logo {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, #e8185d, #6c3483);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 18px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-muted);
+    font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--pink); }
+
+  #home {
+    min-height: 100vh;
+    padding: 100px 80px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-content {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: center;
+    max-width: 1300px; margin: 0 auto; width: 100%;
+  }
+
+  .hero-left { z-index: 2; }
+
+  .hero-tagline {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 20px;
+  }
+
+  .hero-name {
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 900; line-height: 1.1;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .hero-name .highlight { color: var(--pink); }
+
+  .hero-title {
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 800; color: var(--text); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .cursor {
+    display: inline-block; width: 3px; height: 0.85em;
+    background: var(--pink); animation: blink 1s step-end infinite;
+    border-radius: 2px;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-desc {
+    font-size: 15px; line-height: 1.8; color: var(--text-muted);
+    max-width: 520px; margin-bottom: 40px;
+  }
+  .hero-desc .cert-link { color: var(--pink); font-weight: 600; }
+
+  .hero-bottom { display: flex; gap: 60px; align-items: flex-start; flex-wrap: wrap; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 16px; font-weight: 600;
+  }
+
+  .icon-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .icon-btn {
+    width: 58px; height: 58px; border-radius: 16px;
+    background: var(--bg); box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: var(--text-muted);
+    cursor: pointer; transition: all 0.3s; text-decoration: none;
+    border: none;
+  }
+  .icon-btn:hover { box-shadow: var(--shadow-hover); color: var(--pink); transform: translateY(-3px); }
+
+  .skill-grid { display: grid; grid-template-columns: repeat(4, 58px); gap: 12px; }
+
+  .skill-icon {
+    width: 58px; height: 58px; border-radius: 16px;
+    background: var(--bg); box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; cursor: default; transition: all 0.3s;
+    position: relative;
+  }
+  .skill-icon:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+  .skill-icon img { width: 28px; height: 28px; object-fit: contain; }
+
+  .hero-right {
+    display: flex; justify-content: flex-end; align-items: flex-end;
+    position: relative;
+  }
+
+  .hero-img-wrapper {
+    width: 480px; height: 520px;
+    background: linear-gradient(160deg, #e0e0e0 60%, #d0d0d0);
+    border-radius: 32px; box-shadow: var(--shadow);
+    overflow: hidden; display: flex; align-items: flex-end; justify-content: center;
+    position: relative;
+  }
+
+  /* ── PROFILE PHOTO ── */
+  .hero-img-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+    object-position: top center;
+  }
+
+  .hero-img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, #e8e8e8, #d8d8d8);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+    color: var(--text-muted);
+  }
+  .hero-img-placeholder i { font-size: 80px; opacity: 0.3; }
+  .hero-img-placeholder p { font-size: 14px; opacity: 0.5; }
+
+  .hero-badge {
+    position: absolute; bottom: 24px; left: -20px;
+    background: var(--white); border-radius: 16px;
+    padding: 14px 20px; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600;
+  }
+  .hero-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: #00c853; }
+
+  section { padding: 80px 80px; max-width: 1400px; margin: 0 auto; }
+
+  .section-tag {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--pink); font-weight: 700; margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800; color: var(--text); margin-bottom: 48px;
+    line-height: 1.15;
+  }
+
+  .divider {
+    height: 1px; background: linear-gradient(to right, transparent, #d0d0d0, transparent);
+    margin: 0 80px;
+  }
+
+  #services { padding: 80px 80px; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .service-card {
+    background: var(--bg); border-radius: 24px;
+    box-shadow: var(--shadow); padding: 40px 32px;
+    transition: all 0.4s; cursor: default;
+  }
+  .service-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-6px); }
+
+  .service-icon {
+    width: 52px; height: 52px; margin-bottom: 24px;
+    color: var(--pink); font-size: 32px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  #profile { padding: 80px 80px; }
+
+  .profile-card {
+    background: var(--bg); border-radius: 28px;
+    box-shadow: var(--shadow); padding: 40px;
+  }
+  .profile-card-title {
+    font-size: 20px; font-weight: 700; color: var(--pink);
+    margin-bottom: 20px; font-style: italic;
+  }
+  .profile-card p { font-size: 15px; line-height: 1.8; color: var(--text-muted); margin-bottom: 12px; }
+
+  .skill-bar-wrap { margin-bottom: 18px; }
+  .skill-bar-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+  .skill-bar-track { height: 8px; background: #d8d8d8; border-radius: 10px; box-shadow: var(--shadow-inset); overflow: hidden; }
+  .skill-bar-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--pink), var(--pink-light)); transition: width 1.5s ease; }
+
+  #resume { padding: 80px 80px; }
+  .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .resume-col-title { font-size: 22px; font-weight: 700; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+  .resume-col-title i { color: var(--pink); }
+
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--pink), transparent); }
+
+  .timeline-item { position: relative; margin-bottom: 32px; }
+  .timeline-dot { position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--pink); }
+
+  .timeline-card { background: var(--bg); border-radius: 20px; box-shadow: var(--shadow); padding: 24px 28px; transition: all 0.3s; }
+  .timeline-card:hover { box-shadow: var(--shadow-hover); transform: translateX(4px); }
+  .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 12px; }
+  .timeline-title { font-size: 16px; font-weight: 700; }
+  .timeline-badge { font-size: 12px; font-weight: 600; color: var(--pink); background: rgba(232,24,93,0.08); border: 1px solid rgba(232,24,93,0.2); padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+  .timeline-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+  .timeline-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  #portfolio { padding: 80px 80px; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+  .portfolio-card { background: var(--bg); border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; transition: all 0.4s; cursor: pointer; }
+  .portfolio-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-8px); }
+
+  .portfolio-img { height: 200px; overflow: hidden; position: relative; }
+  .portfolio-img-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; font-weight: 800; letter-spacing: -1px; background-size: cover; background-position: center; }
+
+  .portfolio-body { padding: 20px 24px; }
+  .portfolio-tags { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+  .portfolio-likes { color: var(--text-muted); font-size: 13px; }
+  .portfolio-likes i { color: var(--pink); }
+  .portfolio-card h3 { font-size: 16px; font-weight: 700; line-height: 1.4; }
+
+  .portfolio-thumbnail { display: flex; align-items: center; padding: 8px 12px; gap: 10px; }
+  .portfolio-thumbnail img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 2px solid #ccc; }
+  .portfolio-thumbnail span { font-size: 13px; color: #555; font-weight: 500; }
+
+  #certifications { padding: 80px 80px; }
+  .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+  .cert-card { background: var(--bg); border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; transition: all 0.4s; }
+  .cert-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-6px); }
+
+  .cert-img { height: 180px; background: #e8e8e8; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .cert-img img { height: 100%; max-height: 140px; object-fit: contain; }
+
+  .cert-body { padding: 20px 24px; }
+  .cert-type { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); font-weight: 700; margin-bottom: 8px; }
+  .cert-body h3 { font-size: 16px; font-weight: 700; line-height: 1.4; }
+
+  #contact { padding: 80px 80px; text-align: center; }
+  .contact-inner { max-width: 500px; margin: 0 auto; }
+
+  .contact-photo {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: linear-gradient(135deg, #e8185d, #6c3483);
+    margin: 0 auto 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; color: white; font-weight: 800;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-info { margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; margin-bottom: 10px; color: var(--text-muted); }
+  .contact-item i { color: var(--pink); width: 18px; }
+
+  .social-row { display: flex; gap: 14px; justify-content: center; margin-top: 8px; }
+  .social-btn { width: 56px; height: 56px; border-radius: 16px; background: var(--bg); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text-muted); cursor: pointer; transition: all 0.3s; text-decoration: none; }
+  .social-btn:hover { color: var(--pink); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+
+  footer { text-align: center; padding: 28px; font-size: 13px; color: var(--text-muted); border-top: 1px solid #d8d8d8; }
+  footer span { color: var(--pink); font-weight: 700; }
+
+  .back-top { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 44px; height: 44px; border-radius: 12px; background: var(--pink); color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; box-shadow: 0 6px 20px rgba(232,24,93,0.4); transition: all 0.3s; border: none; opacity: 0; text-decoration: none; }
+  .back-top.visible { opacity: 1; }
+  .back-top:hover { transform: translateY(-3px); background: var(--pink-light); }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+
+  @media (max-width: 1024px) {
+    #home, section, #services, #profile, #resume, #portfolio, #certifications, #contact { padding: 60px 40px; }
+    .divider { margin: 0 40px; }
+    .hero-content, .profile-grid, .resume-grid { grid-template-columns: 1fr; }
+    .hero-right { justify-content: center; }
+    .services-grid, .portfolio-grid, .cert-grid { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 12px 24px; }
+    .nav-links { gap: 20px; }
+  }
+
+  @media (max-width: 640px) {
+    nav { flex-wrap: wrap; gap: 12px; }
+    .nav-links { flex-wrap: wrap; gap: 12px; }
+    .services-grid, .portfolio-grid, .cert-grid { grid-template-columns: 1fr; }
+    .hero-img-wrapper { width: 300px; height: 340px; }
+    #home, section, #services, #profile, #resume, #portfolio, #certifications, #contact { padding: 50px 20px; }
+    .divider { margin: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">SAH</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" style="padding-top:120px; max-width:100%;">
+  <div class="hero-content">
+    <div class="hero-left">
+      <p class="hero-tagline">Decoding Data.. Delivering Results..!</p>
+      <h1 class="hero-name">I'm <span class="highlight">SYED ARSHAD HUSSAIN</span></h1>
+      <div class="hero-title"><span class="cursor"></span></div>
+      <p class="hero-desc">
+        A <span class="cert-link"></span> Data Analyst with years of experience in Power BI, SQL, and Advanced Excel.<br><br>
+        I specialize in transforming raw data into actionable insights that support strategic growth and process improvement.<br><br>
+        My journey in data analytics began with a passion for problem-solving and a knack for uncovering trends hidden in datasets.
+      </p>
+
+      <div class="hero-bottom">
+        <div>
+          <p class="section-label">Download Resume</p>
+          <div class="icon-group">
+            <a href="https://drive.google.com/file/d/1MUNtKs40BsDhJZBrP_bIcL43D4vxm6JM/view" target="_blank" class="icon-btn" title="Resume PDF">
+              <i class="fas fa-file-alt"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/arshadhussain-analyst/" target="_blank" class="icon-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Hussainsyedarshad" target="_blank" class="icon-btn" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <p class="section-label">Skill Set</p>
+          <div class="skill-grid">
+            <div class="skill-icon" title="Power BI">
+              <img src="https://img.icons8.com/color/48/power-bi.png" alt="Power BI"/>
+            </div>
+            <div class="skill-icon" title="SQL">
+              <img src="https://img.icons8.com/color/48/sql.png" alt="SQL"/>
+            </div>
+            <div class="skill-icon" title="Excel">
+              <img src="https://img.icons8.com/color/48/microsoft-excel-2019.png" alt="Excel"/>
+            </div>
+            <div class="skill-icon" title="Python">
+              <img src="https://img.icons8.com/color/48/python.png" alt="Python"/>
+            </div>
+            <div class="skill-icon" title="Tableau">
+              <img src="https://img.icons8.com/color/48/tableau-software.png" alt="Tableau"/>
+            </div>
+            <div class="skill-icon" title="Figma">
+              <img src="https://img.icons8.com/color/48/figma.png" alt="Figma"/>
+            </div>
+            <div class="skill-icon" title="Jira">
+              <img src="https://img.icons8.com/color/48/jira.png" alt="Jira"/>
+            </div>
+            <div class="skill-icon" title="Splunk" style="font-size:12px; font-weight:800; color:#65a637;">splnk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-wrapper">
+        <!-- ✅ YOUR PROFILE PHOTO — upload profile.jpg to your images/ folder on GitHub -->
+        <img
+          src="https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/image.jpeg"
+          alt="Syed Arshad Hussain"
+          onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex';"
+        />
+        <div class="hero-img-placeholder" id="photo-placeholder" style="display:none;">
+          <i class="fas fa-user"></i>
+          <p>Upload profile.jpg to images/ folder</p>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="dot"></div>
+        Available for Work
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag fade-in">Services</div>
+  <h2 class="section-title fade-in">What Can I Do For You?</h2>
+  <div class="services-grid">
+    <div class="service-card fade-in fade-in-delay-1">
+      <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Data Analysis</h3>
+      <p>Unlock trends & patterns using advanced querying and modelling.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-2">
+      <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+      <h3>Power BI Development</h3>
+      <p>Design and develop dynamic Power BI dashboards for CXOs, Operations & Finance.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-3">
+      <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+      <h3>Business Analytics</h3>
+      <p>Translate business questions into data backed answers.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-1">
+      <div class="service-icon"><i class="fas fa-database"></i></div>
+      <h3>SQL & DAX Mastery</h3>
+      <p>Create optimized queries and calculated fields for peak performance.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-2">
+      <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+      <h3>KPI & Metric Reporting</h3>
+      <p>Help stakeholders track what matters, in real-time.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-3">
+      <div class="service-icon"><i class="fas fa-dollar-sign"></i></div>
+      <h3>Financial & Risk Analysis</h3>
+      <p>Analyze financial/risk trends for banking and fin-tech clients.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROFILE -->
+<section id="profile">
+  <div style="display:grid; grid-template-columns:1fr 1.6fr; gap:60px; align-items:start;">
+    <div>
+      <div class="section-tag fade-in">Professional Snapshot</div>
+      <h2 class="section-title fade-in" style="margin-bottom:0;">My Profile</h2>
+    </div>
+    <div>
+      <div class="profile-card fade-in">
+        <div class="profile-card-title">Profile Summary</div>
+        <p>Results-driven Power BI Developer and Data Analyst with years of expertise transforming complex data into strategic business insights.</p>
+        <p>Specialized in developing enterprise-grade dashboards, optimizing SQL queries, and delivering automated analytical solutions that drive measurable business outcomes.</p>
+      </div>
+
+      <div class="profile-card fade-in" style="margin-top:24px;">
+        <div class="profile-card-title">Power BI Development</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Power BI / DAX</span><span>95%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>SQL / MySQL</span><span>90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Advanced Excel</span><span>88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Python</span><span>75%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Tableau</span><span>80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="section-tag fade-in">My Journey</div>
+  <h2 class="section-title fade-in">Resume</h2>
+  <div class="resume-grid">
+    <div>
+      <div class="resume-col-title fade-in"><i class="fas fa-graduation-cap"></i> Education</div>
+      <div class="timeline">
+        <div class="timeline-item fade-in fade-in-delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="timeline-title">B.Tech – Computer Science Engineering</div>
+              <div class="timeline-badge">7.0 / 10</div>
+            </div>
+            <div class="timeline-sub">ISL Engineering College (Osmania University) (2020–2024)</div>
+            <p>Developed strong problem-solving and analytical skills by tackling complex engineering challenges, optimizing designs, and improving system efficiency.</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in fade-in-delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="timeline-title">Intermediate College</div>
+              <div class="timeline-badge">70%</div>
+            </div>
+            <div class="timeline-sub">Narayana College (2018–2020)</div>
+            <p>Honed practical technical skills by solving engineering challenges and optimizing processes, sharpening analytical capabilities and laying the foundation for data-driven thinking.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-tag fade-in">Explore My Work – Your Thoughts Matter</div>
+  <h2 class="section-title fade-in">My Portfolio</h2>
+  <div class="portfolio-grid">
+
+    <!-- ✅ Project 1: OTT Merger -->
+    <div class="portfolio-card fade-in fade-in-delay-1">
+      <div class="portfolio-img">
+        <div class="portfolio-img-bg" style="background-image: url('https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/ott.png');"></div>
+      </div>
+      <div class="portfolio-thumbnail">
+        <img src="https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/ott.png" alt="OTT Merger"/>
+        <span>OTT Merger Analysis</span>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">Power BI | SQL | Figma <span class="portfolio-likes"><i class="fas fa-heart"></i></span></div>
+        <h3><a href="https://github.com/Hussainsyedarshad/OTT-MERGER-ANALYSIS" target="_blank" style="color:inherit; text-decoration:none;">OTT Merger Analysis</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Project 2: Business Insights 360 -->
+    <div class="portfolio-card fade-in fade-in-delay-2">
+      <div class="portfolio-img">
+        <div class="portfolio-img-bg" style="background-image: url('https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/360.jpg');"></div>
+      </div>
+      <div class="portfolio-thumbnail">
+        <img src="https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/360.jpg" alt="Business Insights 360"/>
+        <span>Business-Insights-360</span>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">Power BI | SQL | Figma <span class="portfolio-likes"><i class="fas fa-heart"></i></span></div>
+        <h3><a href="https://github.com/Hussainsyedarshad/Business-insides-360" target="_blank" style="color:inherit; text-decoration:none;">Business-Insights-360</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Project 3: Customer Insights -->
+    <div class="portfolio-card fade-in fade-in-delay-3">
+      <div class="portfolio-img">
+        <div class="portfolio-img-bg" style="background-image: url('https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/customer%20insights.png');"></div>
+      </div>
+      <div class="portfolio-thumbnail">
+        <img src="https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/customer%20insights.png" alt="Customer Insights"/>
+        <span>Customer Insights and Market Performance</span>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">MS-Excel | SQL | Figma <span class="portfolio-likes"><i class="fas fa-heart"></i></span></div>
+        <h3><a href="https://github.com/Hussainsyedarshad/Atliq-Excel-Reports" target="_blank" style="color:inherit; text-decoration:none;">Customer Insights and Market Performance</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Project 4: CAB Optimization -->
+    <div class="portfolio-card fade-in fade-in-delay-1">
+      <div class="portfolio-img">
+        <div class="portfolio-img-bg" style="background-image: url('https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/CAB%20GOODS%20IMG.png');"></div>
+      </div>
+      <div class="portfolio-thumbnail">
+        <img src="https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/CAB%20GOODS%20IMG.png" alt="CAB Optimization"/>
+        <span>CAB Optimization Analysis</span>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">Power BI | SQL | Figma <span class="portfolio-likes"><i class="fas fa-heart"></i></span></div>
+        <h3><a href="https://github.com/Hussainsyedarshad/CAB-OPTIMIZATION-ANALYSIS" target="_blank" style="color:inherit; text-decoration:none;">CAB-OPTIMIZATION-ANALYSIS</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Project 5: Festival Sales -->
+    <div class="portfolio-card fade-in fade-in-delay-2">
+      <div class="portfolio-img">
+        <div class="portfolio-img-bg" style="background-image: url('https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/FES.png');"></div>
+      </div>
+      <div class="portfolio-thumbnail">
+        <img src="https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/FES.png" alt="Festival Sales"/>
+        <span>Festival Sales Analysis</span>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">Power BI | SQL | Figma <span class="portfolio-likes"><i class="fas fa-heart"></i></span></div>
+        <h3><a href="https://github.com/Hussainsyedarshad/FESTIVAL-SALES-ANALYSIS" target="_blank" style="color:inherit; text-decoration:none;">FESTIVAL-SALES-ANALYSIS</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Project 6: Atliq Supply Chain -->
+    <div class="portfolio-card fade-in fade-in-delay-3">
+      <div class="portfolio-img">
+        <div class="portfolio-img-bg" style="background-image: url('https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/ATLIQ.png');"></div>
+      </div>
+      <div class="portfolio-thumbnail">
+        <img src="https://github.com/Hussainsyedarshad/Hussainsyedarshad.github.io/blob/main/github%20website/ATLIQ.png" alt="Atliq Supply Chain"/>
+        <span>Atliq Mart Supply Chain Analysis</span>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">Power BI | SQL | Python <span class="portfolio-likes"><i class="fas fa-heart"></i></span></div>
+        <h3><a href="https://github.com/Hussainsyedarshad/Atliq_mart-Supply-Chain-Analysis" target="_blank" style="color:inherit; text-decoration:none;">Atliq_mart-Supply-Chain-Analysis</a></h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <h2 class="section-title fade-in" style="text-align:center;">Certifications</h2>
+  <div class="cert-grid">
+
+    <!-- ✅ Cert 1: Power BI -->
+    <div class="cert-card fade-in fade-in-delay-1">
+      <div class="cert-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Power BI"/>
+      </div>
+      <div class="cert-body">
+        <div class="cert-type">Power BI</div>
+        <h3><a href="https://certificates.simplicdn.net/share/8846271_92191311756021184809.png" target="_blank" style="color:inherit; text-decoration:none;">Power BI Data Analyst Associate</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Cert 2: Cisco — upload cisco-cert.png to images/ folder -->
+    <div class="cert-card fade-in fade-in-delay-2">
+      <div class="cert-img">
+        <img
+          src="https://raw.githubusercontent.com/Hussainsyedarshad/Hussainsyedarshad.github.io/main/images/cisco-cert.png"
+          alt="Cisco Data Analytics"
+          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg';"
+        />
+      </div>
+      <div class="cert-body">
+        <div class="cert-type">Power BI, SQL, Figma</div>
+        <h3><a href="https://private-user-images.githubusercontent.com/158172682/522821213-bc3a1c9b-1578-4fae-8307-5003c546727b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzMxNjIwOTEsIm5iZiI6MTc3MzE2MTc5MSwicGF0aCI6Ii8xNTgxNzI2ODIvNTIyODIxMjEzLWJjM2ExYzliLTE1NzgtNGZhZS04MzA3LTUwMDNjNTQ2NzI3Yi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMzEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDMxMFQxNjU2MzFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05M2ZlMjJjNWM4OWU4ZmZmZGM0OTNiNjlmNjk1YTY4MjVkZDBlY2E5NGZiMmFjN2ZlOGI4YzBmZjkyZTE1NTJkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Ch3IGSNsUBAacbLj2ht1At21fUL00gsvlvuxkFGga1w" target="_blank" style="color:inherit; text-decoration:none;">Cisco Data Analytics Essentials</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Cert 3: HackerRank SQL -->
+    <div class="cert-card fade-in fade-in-delay-3">
+      <div class="cert-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/HackerRank_logo.svg" alt="HackerRank"/>
+      </div>
+      <div class="cert-body">
+        <div class="cert-type">SQL (Intermediate)</div>
+        <h3><a href="https://www.hackerrank.com/certificates/iframe/23b86c4abae2" target="_blank" style="color:inherit; text-decoration:none;">HackerRank SQL Certification</a></h3>
+      </div>
+    </div>
+
+    <!-- ✅ Cert 4: Excel -->
+    <div class="cert-card fade-in fade-in-delay-3">
+      <div class="cert-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Microsoft_Office_Excel_%282018%E2%80%93present%29.svg" alt="Excel"/>
+      </div>
+      <div class="cert-body">
+        <div class="cert-type">Excel</div>
+        <h3><a href="https://certificates.simplicdn.net/share/8842478_92191311755957148051.png" target="_blank" style="color:inherit; text-decoration:none;">Excel Data Analytics Certification</a></h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-photo">SAH</div>
+    <div class="contact-info">
+      <div class="contact-item"><i class="fas fa-phone"></i> +91 7671063358</div>
+      <div class="contact-item"><i class="fas fa-envelope"></i> hussainsyedarshad8@gmail.com</div>
+      <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Hyderabad, India</div>
+    </div>
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/arshadhussain-analyst/" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://instagram.com/yourprofile" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/Hussainsyedarshad" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:hussainsyedarshad8@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026. All rights reserved by <span>Syed Arshad Hussain</span>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#home" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+
+  const roles = ['a Business Analyst.', 'a Data Analyst.', 'a Power BI Expert.', 'a Problem Solver.'];
+  let ri = 0, ci = 0, deleting = false;
+  const titleEl = document.querySelector('.hero-title');
+  function type() {
+    const role = roles[ri];
+    if (!deleting) {
+      titleEl.childNodes[0].textContent = role.slice(0, ++ci);
+      if (ci === role.length) { deleting = true; setTimeout(type, 2000); return; }
+    } else {
+      titleEl.childNodes[0].textContent = role.slice(0, --ci);
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+    }
+    setTimeout(type, deleting ? 60 : 110);
+  }
+  const titleText = document.createTextNode('');
+  const cursor = titleEl.querySelector('.cursor');
+  titleEl.insertBefore(titleText, cursor);
+  setTimeout(type, 800);
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--pink)' : ''; });
+  });
+</script>
+</body>
+</html>
